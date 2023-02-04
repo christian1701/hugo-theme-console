@@ -1,4 +1,19 @@
 <div class="footer">
+    {{/* Copyright */}}
+    {{ if .Site.Params.footer.showCopyright | default true }}
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+        {{- with .Site.Params.copyright }}
+            {{ . | emojify | markdownify }}
+        {{- else }}
+            &copy;
+            {{ now.Format "2006" }}
+            {{ .Site.Author.name | markdownify | emojify }}
+        {{- end }}
+    </p>
+    {{ end }}
+    {{/* Theme attribution */}}
+    {{ if .Site.Params.footer.showThemeAttribution | default true }}
     Powered by <a href="https://gohugo.io/">Hugo</a> with
     <a href="https://github.com/mrmierzejewski/hugo-theme-console/">Console Theme</a>. 
+    {{ end }}    
 </div>
